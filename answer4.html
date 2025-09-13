@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<nav>
+  <a href="index.html">Home</a>
+</nav>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cloudflare Nameservers</title>
+</head>
+<body>
+  <h1>4.Cloudflare Nameservers</h1>
+
+  <p>How are Cloudflare's nameservers different compared to the DNS provided by Google DNS or OpenDNS? Can I delegate to Cloudflare nameservers while still using my host’s DNS?</p>
+  
+  <hr />
+
+  <p>Dear &lt;customer name&gt;,</p>
+
+  <p>Google DNS and OpenDNS are recursive resolvers. A recursive resolver is the first stop in a DNS query. It is a middleman between a client and a DNS nameserver. After receiving a response from the authoritative nameserver containing the requested IP address, the recursive resolver then sends a response to the client.</p>
+
+  <p>Cloudflare nameservers are authoritative DNS servers. The authoritative nameserver is usually the resolver’s last step in the journey for an IP address. The authoritative nameserver contains information specific to the domain name it serves (e.g. google.com) and it can provide a recursive resolver with the IP address of that server found in the DNS A record, or if the domain has a CNAME record (alias) it will provide the recursive resolver with an alias domain, at which point the recursive resolver will have to perform a whole new DNS lookup to procure a record from an authoritative nameserver (often an A record containing an IP address).</p>
+
+  <p>If you want to use Cloudflare as your primary DNS provider and manage your DNS records on Cloudflare, your domain should be using a full setup. You can't delegate to Cloudflare nameservers and simultaneously use your host's DNS.</p>
+
+  <p>You can, however, delegate specific subdomains to Cloudflare by creating NS records for those subdomains in your host DNS settings.</p>
+
+  <p>For more information on both topics, please visit:</p>
+  <ul>
+    <li><a href="https://developers.cloudflare.com/dns/nameservers/" target="_blank" rel="noopener noreferrer">Cloudflare Nameservers</a></li>
+    <li><a href="https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/" target="_blank" rel="noopener noreferrer">Cloudflare Subdomain Setup</a></li>
+    <li><a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/" target="_blank" rel="noopener noreferrer">Managing Subdomains Outside Cloudflare</a></li>
+  </ul>
+
+  <p>If you have any questions, feel free to contact us!</p>
+
+  <p>Best Regards,<br />
+  Diogo Piteira</p>
+</body>
+</html>

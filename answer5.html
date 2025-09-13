@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<nav>
+  <a href="index.html">Home</a>
+</nav>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Content not Being Cached</title>
+</head>
+<body>
+  <h1>5.Content not Being Cached</h1>
+  <p>After activating Cloudflare on my site, I am seeing that resources on my pages are not being cached.</p>
+  <p>Why is Cloudflare’s caching not working on my site?</p>
+
+  <hr />
+
+  <p>Dear &lt;customer name&gt;,</p>
+
+  <p>A Cache-Control header can include a number of directives, and the directive dictates who can cache a resource along with how long those resources can be cached before they must be updated.</p>
+
+  <p>Your Cache-Control is received as follows:<br/>
+  Cache-Control: no-store, no-cache</p>
+
+  <ul>
+    <li>no-store — Indicates any cache, such as a client or proxy cache, must not store any part of either the immediate request or response.</li>
+    <li>no-cache — Indicates the response cannot be used to satisfy a subsequent request without successful validation on the origin server. This allows an origin server to prevent a cache from using the origin to satisfy a request without contacting it, even by caches that have been configured to send stale responses.</li>
+    <li>max-age=seconds — Indicates the response is stale after its age is greater than the specified number of seconds. Age is defined as the time in seconds since the asset was served from the origin server. The <em>seconds</em> argument is an unquoted integer.</li>
+    <li>must-revalidate — Indicates that once the resource is stale, a cache (client or proxy) must not use the response to satisfy subsequent requests without successful validation on the origin server.</li>
+  </ul>
+
+  <p>With the set Cache-Control header, Cloudflare won't cache your content.</p>
+
+  <p>You can use Cache Rules to customize the cache settings to enable caching.<br/>
+  Example: Cache-Control: public, max-age=3600</p>
+
+  <p>For more details refer to:</p>
+  <ul>
+    <li><a href="https://developers.cloudflare.com/cache/how-to/cache-rules/" target="_blank" rel="noopener noreferrer">Cloudflare Cache Rules</a></li>
+    <li><a href="https://developers.cloudflare.com/cache/concepts/cache-control/" target="_blank" rel="noopener noreferrer">Cache-Control Concepts</a></li>
+  </ul>
+
+  <p>If you have any further questions, feel free to ask!</p>
+
+  <p>Best regards,<br/>
+  Diogo Piteira</p>
+
+</body>
+</html>

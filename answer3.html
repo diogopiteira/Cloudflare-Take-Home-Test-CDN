@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<nav>
+  <a href="index.html">Home</a>
+</nav>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3. Workers not applied</title>
+</head>
+<body>
+  <h1>3. Workers not applied</h1>
+
+  <p>I've just added a Worker on the Cloudflare Dashboard for my website: it works in the debugger but doesn't work when I query the site. Why is that? Is there anything to activate or anything I could check?</p>
+
+  <hr />
+
+  <p>Dear &lt;customer name&gt;,</p>
+
+  <p>As a starting point in the troubleshooting of this issue, I encourage you to check that your Worker is connected to an external endpoint such that it can be accessed by the Internet to receive inbound HTTP requests.</p>
+
+  <p>The workers will trigger for the requests matching the routes you configure, so it’s important your route configuration includes the exact domain you want to intercept.</p>
+
+  <p>Also, make sure that the route is specific enough to be triggered on the requests; otherwise, it can be overridden by other routes.</p>
+
+  <p>More information here:<br />
+    <a href="https://developers.cloudflare.com/workers/configuration/routing/" target="_blank" rel="noopener noreferrer">
+      https://developers.cloudflare.com/workers/configuration/routing/
+    </a>
+  </p>
+
+  <p>Last but not least, ensure that you have in fact deployed your Worker to Cloudflare:</p>
+
+  <pre><code># wrangler deploy [SCRIPT] [OPTIONS]</code></pre>
+
+  <p>The Worker debugger runs your latest code instantly, but you have to actually deploy your Worker for live site operations.<br />
+    More information:<br />
+    <a href="https://developers.cloudflare.com/workers/wrangler/commands/#tail" target="_blank" rel="noopener noreferrer">
+      https://developers.cloudflare.com/workers/wrangler/commands/#tail
+    </a>
+  </p>
+
+  <p>Please verify the mentioned possible causes, and if none of them apply, don’t hesitate to contact us for further troubleshooting.</p>
+
+  <p>Best Regards,<br />

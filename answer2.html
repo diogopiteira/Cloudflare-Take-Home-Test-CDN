@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<nav>
+  <a href="index.html">Home</a>
+</nav>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Why is my site coming from California?</title>
+</head>
+<body>
+  <h1>2.Why is my site coming from California?!</h1>
+  <p>My website is hosted in London, but looking at your IPs it shows that you are serving my website from California. Can that be right? Why is that? I thought you were supposed to serve my website from some places close to me?</p>
+  
+  <hr />
+
+  <p>Dear &lt;customer name&gt;,</p>
+
+  <p>Due to the way routing on Cloudflare's Anycast network works, requests may be sent to data center locations that are not necessarily the closest geographically. For example, if Cloudflare does not have a peering relationship with your network provider or if that cache location is receiving increased traffic or errors, Cloudflare may manually route users on Free, Pro, or Business plans to other data centers, for example one in California.</p>
+
+  <p>In case you require your zone to always be served by the closest geographic data center with the highest priority of traffic, contact the Sales team to upgrade to an Enterprise plan.</p>
+
+  <p>More information can be found at:<br />
+  <a href="https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/geographic-traffic-routing/" target="_blank" rel="noopener noreferrer">
+    https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/geographic-traffic-routing/
+  </a></p>
+
+  <p>Additionally, you can monitor Cloudflare’s network status here:<br />
+  <a href="https://www.cloudflarestatus.com/" target="_blank" rel="noopener noreferrer">
+    https://www.cloudflarestatus.com/
+  </a></p>
+
+  <p>Hope I could clarify your doubts,</p>
+
+  <p>Best Regards,<br />
+  Diogo Piteira</p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<nav>
+  <a href="index.html">Home</a>
+</nav>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirection based on user agent</title>
+</head>
+<body>
+  <h1>6.Redirection based on user agent</h1>
+
+  <p>I want to redirect visitors with a specific user agent (MSIE 8.0 for example) to a different page. It seems this is not possible with Cloudflare Page Rules. Is there any other way to achieve that using Cloudflare?</p>
+
+  <hr />
+
+  <p>Dear &lt;customer name&gt;,</p>
+
+  <p>While Cloudflare Page Rules allow you to forward or redirect traffic to a different URL, redirecting based on the User-Agent HTTP request header is unfortunately not possible.  
+  More detailed information on Page Rules capabilities here:<br />
+  <a href="https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/" target="_blank" rel="noopener noreferrer">
+    https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/
+  </a></p>
+
+  <p>However, you can use Cloudflare Workers, which let you write custom logic for this purpose.</p>
+
+  <p>Below find an example Worker script to redirect visitors with specific user agent MSIE 8.0:</p>
+
+  <pre><code>addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const userAgent = request.headers.get('User-Agent')
+
+  if (userAgent &amp;&amp; userAgent.includes('MSIE 8.0')) {
+    return Response.redirect('https://your-fallback-page.com', 302) // Or 301 for permanent
+  }
+
+  // If not MSIE 8.0, continue with the original request
+  return fetch(request)
+}
+</code></pre>
+
+  <p>For more details and examples of Cloudflare Workers and redirects, and how to deploy such Worker, please see:</p>
+
+  <ul>
+    <li><a href="https://developers.cloudflare.com/workers/examples/redirect/" target="_blank" rel="noopener noreferrer">Cloudflare Workers Redirect Example</a></li>
+    <li><a href="https://developers.cloudflare.com/workers/" target="_blank" rel="noopener noreferrer">Cloudflare Workers Documentation</a></li>
+  </ul>
+
+  <p>In case you need further assistance, I'm happy to help!</p>
+
+  <p>Best Regards,<br />
+  Diogo Piteira</p>
+</body>
+</html>

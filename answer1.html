@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<nav>
+  <a href="index.html">Home</a>
+</nav>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Site down, your name servers are down</title>
+</head>
+<body>
+  <h1>
+    1. Site down, your name servers are down<br>
+  </h1>
+  
+  <p>I am having trouble reaching my website http://example.com/ from different networks. Are your nameservers working properly?</p>
+  
+  <hr />
+
+  <p>Dear &lt;customer name&gt;,</p>
+
+  <p>Having access to your DNS and Cloudflare settings, I was able to verify you have DNSSEC enabled.</p>
+
+  <p>When your domain has DNSSEC enabled, your DNS provider digitally signs all your DNS records. This action prevents anyone else from issuing false DNS records on your behalf and redirecting traffic intended for your domain.</p>
+
+  <p>However, having a single set of signed records also prevents Cloudflare from issuing new DNS records on your behalf (which is part of using Cloudflare for your authoritative nameservers). If you've recently changed or updated your nameservers while DNSSEC was enabled, DNSSEC will prevent Cloudflare's DNS records from resolving properly, so your domain may experience connectivity errors.</p>
+
+  <p>More information can be found here: <a href="https://developers.cloudflare.com/dns/dnssec/#disable-dnssec" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/dns/dnssec/#disable-dnssec</a></p>
+
+  <p>Additionally, please be aware that nameserver changes may take some time to propagate. If the nameservers were recently changed, kindly wait up to 24 hours while your registrar updates them. Afterwards, retry reaching the website.</p>
+
+  <p>I also noticed that you manage DNS records via the DNS app in Cloudflare's Dashboard. Another possible cause is that your domain stopped pointing to Cloudflare's nameservers and DNS resolution stopped functioning. This can occur if your domain registrar switches the nameservers for your domain to point to their default nameservers.</p>
+
+  <p>To confirm your domain is still pointing to the correct Cloudflare nameservers:</p>
+  <ul>
+    <li>Use online tools such as <a href="https://www.whatsmydns.net/" target="_blank" rel="noopener noreferrer">WhatsMyDNS</a> to check your authoritative nameservers.</li>
+    <li>Or use the <code>dig</code> CLI command:</li>
+  </ul>
+  <pre><code>dig example.com +trace @1.1.1.1
+dig example.com +trace @8.8.8.8
+</code></pre>
+  <p>For more details, please see: <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#verify-changes" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#verify-changes</a></p>
+
+  <p>If none of the above apply to your case, then you could have:</p>
+  <ul>
+    <li>Missing DNS records: Ensure you have the necessary DNS records in the DNS app of your Cloudflare dashboard. This includes having the following records:
+      <ul>
+        <li>The zone apex (e.g., example.com) record.</li>
+        <li>Existing subdomains(e.g., www.example.com, blog.example.com) records.</li>
+      </ul>
+    </li>
+    <li>Mistyped domain or subdomain: Human errors can happen! I suggest you verify that the domain or subdomain is correctly spelled in the request URL.</li>
+    <li>Unresolved IP Address: In rare cases, the DNS resolver on the client requesting the URL might fail to resolve a DNS record to a valid IP address. Reload the page after a short wait to see if the problem disappears. This issue is unrelated to Cloudflare, but using <a href="https://developers.cloudflare.com/1.1.1.1/setup/" target="_blank" rel="noopener noreferrer">Cloudflare's DNS resolver</a> may help. Contact your hosting provider for additional help with your current DNS resolver.</li>
+  </ul>
+
+  <p>More troubleshooting information can be found at: <a href="https://developers.cloudflare.com/dns/troubleshooting/dns-issues/" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/dns/troubleshooting/dns-issues/</a></p>
+
+  <p>If after all the above verifications the site is still unreachable, please feel free to contact us again!</p>
+
+  <p>Best Regards,<br/>
+  Diogo Piteira</p>
+</body>
+</html>
