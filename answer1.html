@@ -22,7 +22,7 @@
 
   <p>Having access to your DNS and Cloudflare settings, I was able to verify you have DNSSEC enabled.</p>
 
-  <p>When your domain has DNSSEC enabled, your DNS provider digitally signs all your DNS records. This action prevents anyone else from issuing false DNS records on your behalf and redirecting traffic intended for your domain.</p>
+  <p>When your domain has nDNSSEC enabled, your DNS provider digitally signs all your DNS records. This action prevents anyone else from issuing false DNS records on your behalf and redirecting traffic intended for your domain.</p>
 
   <p>However, having a single set of signed records also prevents Cloudflare from issuing new DNS records on your behalf (which is part of using Cloudflare for your authoritative nameservers). If you've recently changed or updated your nameservers while DNSSEC was enabled, DNSSEC will prevent Cloudflare's DNS records from resolving properly, so your domain may experience connectivity errors.</p>
 
